@@ -8,19 +8,37 @@ import React, {
   Component,
   StyleSheet,
   Text,
-  View
+  View,
+  Navigator
 } from 'react-native';
 
+import NoteScreen from './App/Components/NoteScreen';
 import SimpleButton from './App/Components/SimpleButton';
-
 class ReactNotes extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <SimpleButton />
-      </View>
-    );
-  }
+    
+    renderScene (route, navigator) {
+        switch (route.name) {
+            case 'home':
+               return (
+                   <View style={styles.container}>
+                    <SimpleButton onPress={() => navigator.push({name:'createNote'})}
+                        customText = 'Create Note'/>
+                   </View>
+               ); 
+            case 'createNote':
+                return (
+                    <NoteScreen />
+                );
+        }
+    }
+    render() {
+        return (
+            <Navigator
+            initialRoute={{name: 'home'}}
+            renderScene={this.renderScene}
+            />
+        );
+    }
 }
 
 const styles = StyleSheet.create({

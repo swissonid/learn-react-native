@@ -7,9 +7,9 @@ import React, {
 export default class SimpleButton extends React.Component {
     render () {
         return (
-          <TouchableOpacity onPress={() => console.log('Pressed!')}>  
+          <TouchableOpacity onPress={this.props.onPress}>  
             <View>
-                <Text>Simple Button</Text>
+                <Text>{this.props.customText || 'Simple Button' }</Text>
             </View>
           </TouchableOpacity>    
         );

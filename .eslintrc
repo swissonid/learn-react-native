@@ -33,13 +33,6 @@
   },
 
   "rules": {
-
-    
-Error: Parse error on line 35:
-...  "rules": {    //    //Possible Er
--------------------^
-Expecting 'STRING', '}'
-//
     //Possible Errors
     //
     // The following rules point out areas where you might have made mistakes.
@@ -168,7 +161,7 @@ Expecting 'STRING', '}'
     "func-style": 0, // enforces use of function declarations or expressions (off by default)
     "key-spacing": [1, {"beforeColon": false, "afterColon": true}], // enforces spacing between keys and values in object literal properties
     "max-nested-callbacks": [1, 3], // specify the maximum depth callbacks can be nested (off by default)
-    "new-cap": [1, {newIsCap: true, capIsNew: false}], // require a capital letter for constructors
+    "new-cap": [1, {"newIsCap": true, "capIsNew": false}], // require a capital letter for constructors
     "new-parens": 1, // disallow the omission of parentheses when invoking a constructor with no arguments
     "newline-after-var": 0, // allow/disallow an empty newline after var statement (off by default)
     "no-array-constructor": 1, // disallow use of the Array constructor
@@ -196,13 +189,13 @@ Expecting 'STRING', '}'
     "space-before-function-paren": [1, {"anonymous": "always", "named": "never"}], // require or disallow space before function opening parenthesis (off by default)
     "space-in-brackets": [1, "never"], // require or disallow spaces inside brackets (off by default)
     "space-in-parens": [1, "never"], // require or disallow spaces inside parentheses (off by default)
-    "space-infix-ops": [1, "always"], // require spaces around operators
-    "space-return-throw-case": [1, "always"], // require a space after return, throw, and case
+    "space-infix-ops": [1, {"int32Hint": false}], // require spaces around operators
+    "space-return-throw-case": 1, // require a space after return, throw, and case
     "space-unary-ops": [1, {"words": true, "nonwords": false}], // Require or disallow spaces before/after unary operators (words on by default, nonwords off by default)
     "spaced-line-comment": [1, "always"], // require or disallow a space immediately following the // in a line comment (off by default)
     "wrap-regex": 0, // require regex literals to be wrapped in parentheses (off by default)
 
-    //
+   
     // ECMAScript 6
     //
     // These rules are only relevant to ES6 environments and are off by default.
@@ -233,7 +226,7 @@ Expecting 'STRING', '}'
     "react/jsx-quotes": [2, "double", "avoid-escape"], // Enforce quote style for JSX attributes
     "react/jsx-no-undef": 2, // Disallow undeclared variables in JSX
     "react/jsx-sort-props": 0, // Enforce props alphabetical sorting
-    "react/jsx-uses-react": 2, // Prevent React to be incorrectly marked as unused
+    "react/jsx-uses-react": 1, // Prevent React to be incorrectly marked as unused
     "react/jsx-uses-vars": 2, // Prevent variables used in JSX to be incorrectly marked as unused
     "react/no-did-mount-set-state": 2, // Prevent usage of setState in componentDidMount
     "react/no-did-update-set-state": 2, // Prevent usage of setState in componentDidUpdate
