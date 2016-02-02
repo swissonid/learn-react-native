@@ -13,12 +13,15 @@ export default class NoteScreen extends React.Component {
                     placeholder="Untitled"
                     autoFocus={true}
                     onEndEditing={() => {this.refs.body.focus()}}
+                    value={this.props.note.title}
                     style={styles.title}
                 />
                 <TextInput
                     ref="body"
                     placeholder="Start typing"
                     multilines={true}
+                    textAlignVertical="top"
+                    value={this.props.note.body}
                     style={styles.body}
                 />
             </View>
