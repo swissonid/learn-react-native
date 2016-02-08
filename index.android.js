@@ -9,12 +9,13 @@ import React, {
     StyleSheet,
     Text,
     View,
+    ToastAndroid,
     Navigator
 } from 'react-native';
 
-import NoteScreen from './App/Components/NoteScreen';
-import SimpleButton from './App/Components/SimpleButton';
-import HomeScreen from './App/Components/HomeScreen';
+import NoteScreen from './app/Components/NoteScreen';
+import SimpleButton from './app/Components/SimpleButton';
+import HomeScreen from './app/Components/HomeScreen';
 
 var NavigationBarRouteMapper = {
     LeftButton: function (route, navigator, index, navState) {
@@ -63,17 +64,27 @@ var NavigationBarRouteMapper = {
 };
 
 
-class ReactNotes extends Component {
+class ReactNotes extends React.Component {
+
+    state = {notes: [{title: "Note Global 1", body: "Body 1", id: 1} , {title: "Note Global 2", body: "Body 2", id: 1}]};
 
     renderScene(route, navigator) {
+        const notes = this.state.notes
         switch (route.name) {
             case 'home':
                 return (
-                    <HomeScreen navigator={navigator}/>
+                    <HomeScreen
+                        navigator={navigator}
+                        notes={notes}
+                    />
                 );
             case 'createNote':
                 return (
-                    <NoteScreen navigator={navigator} note={route.note}/>
+                    <NoteScreen
+                        navigator={navigator}
+                        note={route.note}
+                        onChangeNote={(note) => console.log("note has changed: "+note)}
+                        />
                 );
         }
     }
