@@ -13,9 +13,10 @@ import React, {
     Navigator
 } from 'react-native';
 
-import NoteScreen from './app/Components/NoteScreen';
-import SimpleButton from './app/Components/SimpleButton';
-import HomeScreen from './app/Components/HomeScreen';
+import _ from 'underscore'
+import NoteScreen from './app/components/NoteScreen';
+import SimpleButton from './app/components/SimpleButton';
+import HomeScreen from './app/components/HomeScreen';
 
 var NavigationBarRouteMapper = {
     LeftButton: function (route, navigator, index, navState) {
@@ -67,23 +68,23 @@ var NavigationBarRouteMapper = {
 class ReactNotes extends React.Component {
 
     constructor(props){
-        super(props)
-        this.state = { notes: [
-            {title: "Note Global 1", body: "Body 1", id: 1}
-            , {title: "Note Global 2", body: "Body 2", id: 1}
-        ]
+        super(props);
+        this.state = { notes: {
+                1: {title: "Note Global 1", body: "Body 1", id: 1},
+                2: {title: "Note Global 2", body: "Body 2", id: 2}
+            }
         };
+        console.log(`this.state.notes: ${this.state.notes}`)
     }
 
 
     renderScene(route, navigator) {
-
         switch (route.name) {
             case 'home':
                 return (
                     <HomeScreen
                         navigator={navigator}
-                        notes={this.state.notes}
+                        notes={_(this.state.notes).toArray()}
                     />
                 );
             case 'createNote':
@@ -101,7 +102,7 @@ class ReactNotes extends React.Component {
         return (
             <Navigator
                 initialRoute={{name: 'home'}}
-                renderScene={this.renderScene}
+                renderScene={this.renderScene.bind(this)}
                 navigationBar={
                     <Navigator.NavigationBar
                         routeMapper={NavigationBarRouteMapper}
